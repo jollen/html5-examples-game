@@ -56,6 +56,9 @@ var gameModule = (function ($, Sizzle) {
 		$("#game-screen").css('display', 'none');
 		
 		$("#score-board").fadeIn("slow");
+		
+		// Send game score 
+		$("#status").sendMessage(scores);
 	}
 	
 	function touchEvent(e) {
