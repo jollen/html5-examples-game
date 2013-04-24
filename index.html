@@ -1,0 +1,26 @@
+<!DOCTYPE html> <html><head>	<meta charset="utf-8">	<title>NO Game</title>
+	<link rel="stylesheet" href="main.css" /></head> <body><div id="game">	<div class="screen" id="main-menu"></div>	<div class="screen" id="game-screen">
+		<canvas id="cover"></canvas>
+	</div>	<div class="screen" id="score-board"></div>	</div></body> 
+<script>
+var gameModule = (function () {
+	function drawBall() {
+		var canvas = document.getElementById("cover");
+		var ctx = canvas.getContext("2d");
+		
+		canvas.width = 320;
+		canvas.height = 480;
+		
+		ctx.fillStyle = "black";
+		ctx.beginPath();
+		ctx.arc(100, 100, 50, 0, Math.PI * 2, true);
+		ctx.fill();
+	}	
+	
+	return {
+		drawBall: drawBall,
+	}
+}) ();
+
+gameModule.drawBall();
+</script></html>
