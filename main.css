@@ -1,5 +1,9 @@
 #game {
 	width: 320px;
 	height: 480px;
+}
+
+#game-screen {
 	background-color: #d5d5d5;
+	display: none;
 }
