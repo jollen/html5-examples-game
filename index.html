@@ -28,7 +28,20 @@ var gameModule = (function () {
 		ctx.fill();
 	}	
 	
+	function touchEvent(e) {
+		
+		var x,
+		    y;
+		    
+		x = e.clientX;
+		y = e.clientY;
+		
+		console.log("Clicked: " + x + ", " + y);
+	}
+	
 	function gameStart() {
+		document.getElementById("game").addEventListener("click", touchEvent, false);
+		
 		randomBall();
 		drawBall();
 	}
