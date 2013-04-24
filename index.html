@@ -4,7 +4,7 @@
 		<canvas id="cover"></canvas>
 	</div>	<div class="screen" id="score-board"></div>	</div></body> 
 <script>
-var gameModule = (function () {
+var gameModule = (function ($) {
 	
 	var ballX,
 	    ballY,
@@ -60,6 +60,9 @@ var gameModule = (function () {
 		// Reset scores
 		scores = 0;
 		
+		//
+		$("#game-screen").fadeIn("slow");
+		
 		randomBall();
 		drawBall();
 	}
@@ -67,10 +70,9 @@ var gameModule = (function () {
 	return {
 		gameStart: gameStart,
 	}
-}) ();
+}) ($);
 
 $(document).ready(function () {
-	$("#game-screen").fadeIn("slow");
 	gameModule.gameStart();
 });
 </script></html>
