@@ -30,13 +30,20 @@ var gameModule = (function ($) {
 		ctx.arc(ballX, ballY, ballR, 0, Math.PI * 2, true);
 		ctx.fill();
 				
-		if (balls <= 10) {
+		if (balls <= 5) {
 			timeoutVar = setTimeout(drawBall, 1000);
 			balls = balls + 1;
 		} else {
 			// Game Over
+			gameOver();
 		}
 	}	
+	
+	function gameOver() {
+		$("#game-screen").css('display', 'none');
+		
+		$("#score-board").fadeIn("fast");
+	}
 	
 	function touchEvent(e) {
 		var x,
@@ -57,6 +64,8 @@ var gameModule = (function ($) {
 			if ((y > y1) && (y < y2)) {				
 				scores = scores + (100 - ballR);
 				console.log("Hit! Scores: " + scores);
+				
+				$("#score-board").html(scores);
 			}
 		}		
 	}

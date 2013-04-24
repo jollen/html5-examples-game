@@ -7,3 +7,8 @@
 	background-color: #d5d5d5;
 	display: none;
 }
+
+#score-board {
+   display: none;
+	font-size: 10em;
+}
