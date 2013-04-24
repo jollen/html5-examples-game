@@ -1,4 +1,4 @@
-var gameModule = (function ($) {
+var gameModule = (function ($, Sizzle) {
 	
 	var ballX,
 	    ballY,
@@ -10,20 +10,24 @@ var gameModule = (function ($) {
 	
 	var balls;
 	
-	function randomBall() {
-		ballX = Math.floor(Math.random() * 320);  // [0..320]
-		ballY = Math.floor(Math.random() * 480);  // [0..480]
-		ballR = Math.floor(Math.random() * 80);   // [0..80]
+	function randomBall(w, h, r) {
+		ballX = Math.floor(Math.random() * w);  // [0..320]
+		ballY = Math.floor(Math.random() * h);  // [0..480]
+		ballR = Math.floor(Math.random() * r);   // [0..80]
 	}
 	
 	function drawBall() {
 		var canvas = document.getElementById("cover");
 		var ctx = canvas.getContext("2d");
 		
-		canvas.width = 320;
-		canvas.height = 480;
+		// Use Sizzle selector to get attributes
+		var background = Sizzle("#game")[0],
+			rect = background.getBoundingClientRect();
 		
-		randomBall();
+		canvas.width = rect.width;
+		canvas.height = rect.height;
+		
+		randomBall(canvas.width, canvas.height, 80);
 		
 		ctx.fillStyle = "black";
 		ctx.beginPath();
@@ -88,7 +92,7 @@ var gameModule = (function ($) {
 	return {
 		gameStart: gameStart,
 	}
-}) ($);
+}) ($, Sizzle);
 
 $(document).ready(function () {
 	gameModule.gameStart();
