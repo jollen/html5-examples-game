@@ -6,6 +6,10 @@ var gameModule = (function ($) {
 	    
 	var scores;
 	
+	var timeoutVar;
+	
+	var balls;
+	
 	function randomBall() {
 		ballX = Math.floor(Math.random() * 320);  // [0..320]
 		ballY = Math.floor(Math.random() * 480);  // [0..480]
@@ -19,10 +23,19 @@ var gameModule = (function ($) {
 		canvas.width = 320;
 		canvas.height = 480;
 		
+		randomBall();
+		
 		ctx.fillStyle = "black";
 		ctx.beginPath();
 		ctx.arc(ballX, ballY, ballR, 0, Math.PI * 2, true);
 		ctx.fill();
+				
+		if (balls <= 10) {
+			timeoutVar = setTimeout(drawBall, 1000);
+			balls = balls + 1;
+		} else {
+			// Game Over
+		}
 	}	
 	
 	function touchEvent(e) {
@@ -55,9 +68,11 @@ var gameModule = (function ($) {
 		scores = 0;
 		
 		//
+		balls = 1;
+		
+		//
 		$("#game-screen").fadeIn("slow");
 		
-		randomBall();
 		drawBall();
 	}
 	
