@@ -4,6 +4,17 @@
 	</div>	<div class="screen" id="score-board"></div>	</div></body> 
 <script>
 var gameModule = (function () {
+	
+	var ballX,
+	    ballY,
+	    ballR;
+	
+	function randomBall() {
+		ballX = Math.floor(Math.random() * 320);  // [0..320]
+		ballY = Math.floor(Math.random() * 480);  // [0..480]
+		ballR = Math.floor(Math.random() * 80);   // [0..80]
+	}
+	
 	function drawBall() {
 		var canvas = document.getElementById("cover");
 		var ctx = canvas.getContext("2d");
@@ -13,14 +24,19 @@ var gameModule = (function () {
 		
 		ctx.fillStyle = "black";
 		ctx.beginPath();
-		ctx.arc(100, 100, 50, 0, Math.PI * 2, true);
+		ctx.arc(ballX, ballY, ballR, 0, Math.PI * 2, true);
 		ctx.fill();
 	}	
 	
+	function gameStart() {
+		randomBall();
+		drawBall();
+	}
+	
 	return {
-		drawBall: drawBall,
+		gameStart: gameStart,
 	}
 }) ();
 
-gameModule.drawBall();
+gameModule.gameStart();
 </script></html>
