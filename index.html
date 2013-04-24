@@ -8,6 +8,8 @@ var gameModule = (function () {
 	var ballX,
 	    ballY,
 	    ballR;
+	    
+	var scores;
 	
 	function randomBall() {
 		ballX = Math.floor(Math.random() * 320);  // [0..320]
@@ -44,14 +46,18 @@ var gameModule = (function () {
 		y2 = ballY + ballR;
 
 		if ((x > x1) && (x < x2)) {
-			if ((y > y1) && (y < y2)) {
-				console.log("Hit! Scores: ");
+			if ((y > y1) && (y < y2)) {				
+				scores = scores + (100 - ballR);
+				console.log("Hit! Scores: " + scores);
 			}
 		}		
 	}
 	
 	function gameStart() {
 		document.getElementById("game").addEventListener("click", touchEvent, false);
+		
+		// Reset scores
+		scores = 0;
 		
 		randomBall();
 		drawBall();
