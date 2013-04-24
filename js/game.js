@@ -10,10 +10,15 @@ var gameModule = (function ($, Sizzle) {
 	
 	var balls;
 	
+	// Used by drawBall
+	var imageObj = new Image();
+	
 	function randomBall(w, h, r) {
-		ballX = Math.floor(Math.random() * w);  // [0..320]
-		ballY = Math.floor(Math.random() * h);  // [0..480]
-		ballR = Math.floor(Math.random() * r);   // [0..80]
+		ballX = Math.floor(Math.random() * w);  
+		ballY = Math.floor(Math.random() * h); 
+		ballR = Math.floor(Math.random() * r); 
+		
+		if (ballR < 30) ballR = 30;
 	}
 	
 	function drawBall() {
@@ -27,12 +32,16 @@ var gameModule = (function ($, Sizzle) {
 		canvas.width = rect.width;
 		canvas.height = rect.height;
 		
-		randomBall(canvas.width, canvas.height, 80);
+		randomBall(canvas.width, canvas.height, 200);
 		
-		ctx.fillStyle = "black";
-		ctx.beginPath();
-		ctx.arc(ballX, ballY, ballR, 0, Math.PI * 2, true);
-		ctx.fill();
+		//ctx.fillStyle = "black";
+		//ctx.beginPath();
+		//ctx.arc(ballX, ballY, ballR, 0, Math.PI * 2, true);
+		//ctx.fill();		
+		
+		// <img src='img/bubble.jpg' />
+		imageObj.src = 'img/bubble.jpg';
+		ctx.drawImage(imageObj, ballX, ballY, ballR, ballR);
 				
 		if (balls <= 10) {
 			timeoutVar = setTimeout(drawBall, 1000);
