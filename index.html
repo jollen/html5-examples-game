@@ -4,22 +4,27 @@
 	<script src="js/sizzle.js"></script>	
 	<script src="js/game.js"></script></head> <body><div id="game">	<div class="screen" id="main-menu"></div>	<div class="screen" id="game-screen">
 		<canvas id="cover"></canvas>
-	</div>	<div class="screen" id="score-board"></div>	</div></body> 
+	</div>	<div class="screen" id="score-board"></div>	</div>
+<div id="status"></div></body> 
 <script>
-var ws = new WebSocket('ws://static.moko365.com:8888/', 'echo-protocol');
-
-ws.onopen = function() {
-	alert("OK");
+$.fn.createWebSocket = function () {
+	var ws = new WebSocket('ws://static.moko365.com:8888/', 'echo-protocol');
+	
+	// This 'this' is '#status' object according to this sample
+	var content = this;
+	
+	ws.onopen = function() {
+		content.html("<h2>Server ready !</h2>");
+	};
+	
+	ws.onmessage = function() {
+	};
+	
+	ws.onclose = function() {
+	};
+	
+	ws.onerror = function() {
+	};
 };
-
-ws.onmessage = function() {
-};
-
-ws.onclose = function() {
-	alert("Ouch");
-};
-
-ws.onerror = function() {
-};
-
+$("#status").createWebSocket();
 </script></html>
