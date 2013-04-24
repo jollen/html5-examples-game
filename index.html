@@ -4,4 +4,22 @@
 	<script src="js/sizzle.js"></script>	
 	<script src="js/game.js"></script></head> <body><div id="game">	<div class="screen" id="main-menu"></div>	<div class="screen" id="game-screen">
 		<canvas id="cover"></canvas>
-	</div>	<div class="screen" id="score-board"></div>	</div></body> </html>
+	</div>	<div class="screen" id="score-board"></div>	</div></body> 
+<script>
+var ws = new WebSocket('ws://static.moko365.com:8888/', 'echo-protocol');
+
+ws.onopen = function() {
+	alert("OK");
+};
+
+ws.onmessage = function() {
+};
+
+ws.onclose = function() {
+	alert("Ouch");
+};
+
+ws.onerror = function() {
+};
+
+</script></html>
