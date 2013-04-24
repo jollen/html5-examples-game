@@ -79,7 +79,7 @@ var gameModule = (function ($, Sizzle) {
 
 		if ((x > x1) && (x < x2)) {
 			if ((y > y1) && (y < y2)) {				
-				scores = scores + (100 - ballR);
+				scores = scores + (210 - ballR);
 				console.log("Hit! Scores: " + scores);
 				
 				$("#score-board").html(scores);
