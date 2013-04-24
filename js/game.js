@@ -30,7 +30,7 @@ var gameModule = (function ($) {
 		ctx.arc(ballX, ballY, ballR, 0, Math.PI * 2, true);
 		ctx.fill();
 				
-		if (balls <= 5) {
+		if (balls <= 10) {
 			timeoutVar = setTimeout(drawBall, 1000);
 			balls = balls + 1;
 		} else {
@@ -42,7 +42,7 @@ var gameModule = (function ($) {
 	function gameOver() {
 		$("#game-screen").css('display', 'none');
 		
-		$("#score-board").fadeIn("fast");
+		$("#score-board").fadeIn("slow");
 	}
 	
 	function touchEvent(e) {
