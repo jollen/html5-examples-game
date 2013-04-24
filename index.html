@@ -29,14 +29,25 @@ var gameModule = (function () {
 	}	
 	
 	function touchEvent(e) {
-		
 		var x,
 		    y;
 		    
+		var x1, x2, y1, y2;
+		    
 		x = e.clientX;
 		y = e.clientY;
-		
-		console.log("Clicked: " + x + ", " + y);
+				
+        // 四個角
+		x1 = ballX - ballR;
+		x2 = ballX + ballR;		
+		y1 = ballY - ballR;
+		y2 = ballY + ballR;
+
+		if ((x > x1) && (x < x2)) {
+			if ((y > y1) && (y < y2)) {
+				console.log("Hit! Scores: ");
+			}
+		}		
 	}
 	
 	function gameStart() {
