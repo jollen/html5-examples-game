@@ -68,9 +68,13 @@ var gameModule = (function ($, Sizzle) {
 		y = e.clientY;
 				
         // 四個角
-		x1 = ballX - ballR;
-		x2 = ballX + ballR;		
-		y1 = ballY - ballR;
+		//x1 = ballX - ballR;
+		//x2 = ballX + ballR;		
+		//y1 = ballY - ballR;
+		//y2 = ballY + ballR;
+		x1 = ballX;
+		x2 = ballX + ballR;
+		y1 = ballY;
 		y2 = ballY + ballR;
 
 		if ((x > x1) && (x < x2)) {
