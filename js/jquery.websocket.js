@@ -9,7 +9,7 @@
 	};
 	
 	$.fn.createWebSocket = function () {
-		ws = new WebSocket('ws://static.moko365.com:8888/', 'echo-protocol');
+		ws = new WebSocket('ws://127.0.0.1:8888/', 'echo-protocol');
 		
 		// This 'this' is '#status' object according to this sample
 		var content = this;
