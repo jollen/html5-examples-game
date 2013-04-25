@@ -4,9 +4,13 @@
 	var scoresArray;
 	
 	$.fn.displayScoreBoard = function() {
-		for (i = 0; i < scoresArray.length; i++) {
-			this.append("<p>" + scoresArray[i].no + "," + scoresArray[i].scores + "</p>");	
-		}		
+		// THIS IS OLD STYLE
+		//for (i = 0; i < scoresArray.length; i++) {
+		//	this.append("<p>" + scoresArray[i].no + "," + scoresArray[i].scores + "</p>");	
+		//}		
+		
+		// Use new style
+		$("#scoresTemplate").tmpl(scoresArray).appendTo("#scoresList");
 	};
 	
 	$.fn.sendMessage = function(str) {
