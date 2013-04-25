@@ -6,6 +6,10 @@ function start(handlers) {
   	var pathname = url.parse(request.url).pathname;
    	
     console.log("Request received. API: " + pathname);
+    
+    if (typeof handlers[pathname] === 'function') {
+    	handlers[pathname]();
+    }
 
     response.writeHead(200, {
     	'Content-Type': 'text/html'
