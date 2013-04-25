@@ -19,7 +19,7 @@ function send(response, query, clients) {
 	
 	// DEBUG
 	for (i = 0;i < history.length; i++) {
-		console.log(i + ": " + history[i].score);
+		console.log(i + ": " + history[i].scores);
 	}	
 	
 	var scoresObj = {
