@@ -56,6 +56,7 @@ var gameModule = (function ($, Sizzle) {
 		$("#game-screen").css('display', 'none');
 		
 		$("#score-board").fadeIn("slow");
+		$("#score-board").append("<Button>Submit Score</Button>");
 		
 		// Send game score 
 		$("#status").sendMessage(scores);
