@@ -23,7 +23,7 @@
 			var scoresArray = scoresObj.data;
 			
 			for (i = 0; i < scoresArray.length; i++) {
-				content.append("<p>" + scoresArray[i].no + "," + scoresArray[i].scores + "</p>");	
+				content.html("<p>" + scoresArray[i].no + "," + scoresArray[i].scores + "</p>");	
 			}
 		};
 		

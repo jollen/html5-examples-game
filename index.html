@@ -9,6 +9,14 @@
 </body> 
 <script>
 function submit() {
-	$.ajax();
+     $.ajax({
+         url: "http://127.0.0.1:8888/send",
+         type: "GET",
+         dataType: "json",
+         data: {
+				 s: gameModule.getScores(),
+				 u: "jollen",
+		 },
+     });
 }
 </script></html>

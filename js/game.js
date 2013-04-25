@@ -56,10 +56,10 @@ var gameModule = (function ($, Sizzle) {
 		$("#game-screen").css('display', 'none');
 		
 		$("#score-board").fadeIn("slow");
-		$("#score-board").append("<Button onClick=\"submit();\">Submit Score</Button>");
+		$("#score-board").append("<Button id=\"submit_button\" onClick=\"submit();\">Submit Score</Button>");
 		
-		// Send game score 
-		$("#status").sendMessage(scores);
+		// Send game score. WE USE HTTP API NOW.
+		//$("#status").sendMessage(scores);
 	}
 	
 	function touchEvent(e) {
@@ -91,6 +91,10 @@ var gameModule = (function ($, Sizzle) {
 		}		
 	}
 	
+	function getScores() {
+		return scores;
+	}
+	
 	function gameStart() {
 		document.getElementById("game").addEventListener("click", touchEvent, false);
 		
@@ -108,5 +112,6 @@ var gameModule = (function ($, Sizzle) {
 	
 	return {
 		gameStart: gameStart,
+		getScores: getScores,
 	}
 }) ($, Sizzle);
