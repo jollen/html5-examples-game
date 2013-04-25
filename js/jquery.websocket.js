@@ -1,6 +1,14 @@
 (function($) {
 	var ws;
 	
+	var scoresArray;
+	
+	$.fn.displayScoreBoard = function() {
+		for (i = 0; i < scoresArray.length; i++) {
+			this.append("<p>" + scoresArray[i].no + "," + scoresArray[i].scores + "</p>");	
+		}		
+	};
+	
 	$.fn.sendMessage = function(str) {
 		var obj = {
 			scores: str
@@ -20,11 +28,16 @@
 		
 		ws.onmessage = function(message) {
 			var scoresObj = JSON.parse(message.data);
-			var scoresArray = scoresObj.data;
+			scoresArray = scoresObj.data;
 			
-			for (i = 0; i < scoresArray.length; i++) {
-				content.html("<p>" + scoresArray[i].no + "," + scoresArray[i].scores + "</p>");	
-			}
+			// Empty its content
+			//content.empty();
+			
+			//for (i = 0; i < scoresArray.length; i++) {
+			//	content.append("<p>" + scoresArray[i].no + "," + scoresArray[i].scores + "</p>");	
+			//}
+			
+			$("#active-score-board").displayScoreBoard();
 		};
 		
 		ws.onclose = function() {

@@ -57,6 +57,7 @@ var gameModule = (function ($, Sizzle) {
 		
 		$("#score-board").fadeIn("slow");
 		$("#score-board").append("<Button id=\"submit_button\" onClick=\"submit();\">Submit Score</Button>");
+		$("#score-board").append("<Button id=\"scoreboard_button\" onClick=\"scoreBoard();\">Score Board</Button>");
 		
 		// Send game score. WE USE HTTP API NOW.
 		//$("#status").sendMessage(scores);

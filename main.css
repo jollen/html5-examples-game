@@ -13,6 +13,10 @@
 	font-size: 10em;
 }
 
+#active-score-board {
+	display: none;
+}
+
 /* CSS Button (Red) */
 
 button {
