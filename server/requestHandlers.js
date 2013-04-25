@@ -2,17 +2,17 @@ var querystring = require('querystring');
 
 var history = [];
 
-function start(response, query) {
+function start(response, query, clients) {
 	console.log("in /start");
 }
 
-function send(response, query) {
+function send(response, query, clients) {
 	console.log("in /send");
 	
 	var parsedquery = querystring.parse(query);
 	
 	var obj = {
-		score: parsedquery.s
+		scores: parsedquery.s
 	};
 	
 	history.push(obj);
@@ -22,10 +22,18 @@ function send(response, query) {
 		console.log(i + ": " + history[i].score);
 	}	
 	
+	var scoresObj = {
+		type: 'scores',
+		data: history
+	};
+	
 	// Push to websocket clients
+	for (i = 0; i < clients.length; i++) {
+		clients[i].sendUTF(JSON.stringify(scoresObj));
+	}
 }
 
-function list(response, query) {
+function list(response, query, clients) {
 	console.log("in /list");
 }
 

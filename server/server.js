@@ -2,6 +2,11 @@ var http = require("http");
 var url = require("url");
 var WebSocketServer = require('websocket').server;
 
+/**
+ * Save all client connections
+ */
+var clients = [];
+
 function start(handlers) {
   function onRequest(request, response) {
   	var pathname = url.parse(request.url).pathname;
@@ -10,7 +15,7 @@ function start(handlers) {
     console.log("Request received. API: " + pathname);
     
     if (typeof handlers[pathname] === 'function') {
-    	handlers[pathname](response, query);
+    	handlers[pathname](response, query, clients);
     }
 
     response.writeHead(200, {
@@ -39,6 +44,8 @@ function start(handlers) {
  	console.log("Websocket connection requested");
  	
  	var connection = request.accept('echo-protocol', request.origin);
+ 	
+ 	clients.push(connection);
  	
  	connection.on('message', onWsConnMessage);
   }

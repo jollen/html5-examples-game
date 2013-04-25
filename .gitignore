@@ -1,8 +1,6 @@
 
 .DS_Store
 
-server/code_gen.py
-
-server/requestHandlers.js.tmpl
-
 server/node_modules/*
+
+code_gen/*
