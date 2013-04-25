@@ -43,7 +43,7 @@ var gameModule = (function ($, Sizzle) {
 		imageObj.src = 'img/bubble.jpg';
 		ctx.drawImage(imageObj, ballX, ballY, ballR, ballR);
 				
-		if (balls <= 10) {
+		if (balls <= 3) {
 			timeoutVar = setTimeout(drawBall, 1000);
 			balls = balls + 1;
 		} else {

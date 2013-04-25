@@ -12,6 +12,7 @@ function send(response, query, clients) {
 	var parsedquery = querystring.parse(query);
 	
 	var obj = {
+        no: history.length,
 		scores: parsedquery.s
 	};
 	

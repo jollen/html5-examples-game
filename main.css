@@ -17,6 +17,39 @@
 	display: none;
 }
 
+/* Table */
+
+table{
+  border-spacing:1px;
+  margin:0 0 0 0;
+  padding:0 0 0 0;
+  width:100%;
+}
+
+tr.alt td{
+  width: 100%;
+  background:#eee;
+}
+
+td { 
+  font-size: 1.4em; 
+  width: 100%;
+  border:0;
+  padding:0.5em 1em;
+  vertical-align:middle;
+  border-bottom:1px solid #eee;
+  line-height:1.0em;
+  text-align:left;
+}
+
+th{
+  padding:0.6em 1em;
+  vertical-align:middle;
+  background:#eee;
+  text-align:center;
+}
+
+
 /* CSS Button (Red) */
 
 button {

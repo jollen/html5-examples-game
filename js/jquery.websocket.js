@@ -2,6 +2,7 @@
 	var ws;
 	
 	var scoresArray;
+	var scoreBoardHtml = $("#active-score-board").html();
 	
 	$.fn.displayScoreBoard = function() {
 		// THIS IS OLD STYLE
@@ -9,8 +10,11 @@
 		//	this.append("<p>" + scoresArray[i].no + "," + scoresArray[i].scores + "</p>");	
 		//}		
 		
+		var scores = scoresArray.slice(0, 5);
+		
 		// Use new style
-		$("#scoresTemplate").tmpl(scoresArray).appendTo("#scoresList");
+		$("#active-score-board").html(scoreBoardHtml);
+		$("#scoresTemplate").tmpl(scores).appendTo("#active-score-board");
 	};
 	
 	$.fn.sendMessage = function(str) {
