@@ -110,7 +110,3 @@ var gameModule = (function ($, Sizzle) {
 		gameStart: gameStart,
 	}
 }) ($, Sizzle);
-
-$(document).ready(function () {
-	gameModule.gameStart();
-});

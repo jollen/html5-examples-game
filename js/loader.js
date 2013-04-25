@@ -1,14 +1,14 @@
 window.addEventListener("load", function() {
-
 	Modernizr.load([
 	    {
 	        load : [
-	        	"jquery-1.9.2.min.js",
-	        	"sizzle.js",
-	        	"jquery.websocket.js",
-	            "game.js"
+	        	"js/jquery-1.9.2.min.js",
+	        	"js/sizzle.js",
+	        	"js/jquery.websocket.js",
+	            "js/game.js",
 	        ],
 	        complete : function() {
+	        	gameModule.gameStart();
 	        	$("#status").createWebSocket();
 	        }
 	    }
