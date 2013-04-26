@@ -1,4 +1,7 @@
 var querystring = require('querystring');
+var couchdb = require('felix-couchdb');
+var client = couchdb.createClient(5984, 'localhost');
+var db = client.db('gamedb');
 
 var history = [];
 
@@ -12,15 +15,22 @@ function send(response, query, clients) {
 	var parsedquery = querystring.parse(query);
 	
 	var obj = {
-        no: history.length,
-		scores: parsedquery.s
+       	no: history.length,
+		scores: parsedquery.s,
+		picture: parsedquery.p
 	};
+
+    // Save to CouchDB
+    db.saveDoc(history.length, obj, function (err, done) {
+        if (err) throw new Error(JSON.stringify(err));
+        console.log("Saved to CouchDB");
+    });
 	
 	history.push(obj);
 	
 	// DEBUG
 	for (i = 0;i < history.length; i++) {
-		console.log(i + ": " + history[i].scores);
+		console.log(i + ": " + history[i].scores + ", picture: [" + history[i].picture + "]");
 	}	
 	
 	var scoresObj = {
