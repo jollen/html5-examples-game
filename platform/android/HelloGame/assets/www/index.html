@@ -1,0 +1,28 @@
+<!DOCTYPE html> <html manifest="game.appcache"><head>	<meta charset="utf-8" >	<title>NO Game</title>
+	<link rel="stylesheet" href="main.css" />
+	<script src="js/modernizr.min.js"></script>
+	<script src="js/loader.js"></script></head> <body>
+<script id="scoresTemplate" type="text/x-jquery-tmpl"> 
+		<tr>			<td width="30%"><img src="data:image/jpeg;base64,${picture}" width="48" height="48" /></td>			<td width="70%">${scores}</td>		</tr>
+</script>
+<div id="game">	<div class="screen" id="main-menu"></div>	<div class="screen" id="game-screen">
+		<canvas id="cover"></canvas>
+	</div>	<div class="screen" id="score-board"></div>	
+	<div class="screen" id="active-score-board">
+		<table>			<tr>				<th width="30%">No</th>				<th width="70%">Score</th>			</tr>
+		</table>	
+	</div>		</div>
+<div id="status"></div>
+      
+</body> 
+<script>function submitJSON() {     $.ajax({         url: "http://static.moko365.com:8888/send",         type: "GET",         dataType: "json",         data: {         		 p: gameModule.getPicture(),				 s: gameModule.getScores(),				 u: "jollen",		 },     });}
+function submit() {	 $("#status").takePicture(submitJSON);
+}
+
+function scoreBoard() {
+	$("#score-board").css('display', 'none');
+	
+	$("#active-score-board").fadeIn('slow');
+	$("#active-score-board").displayScoreBoard();
+}function WebSocketImpl (url, proto) {	var instance;		WebSocketImpl = function WebSocketImpl() {		return instance;	};		WebSocketImpl.prototype = this;		instance = new WebSocketImpl();		instance.constructor = WebSocketImpl;		// Start to build	instance.url = url;	instance.proto = proto;			// Public method	instance.connect = function() {		WebSocketAndroid.connect(url, proto);	};				return instance;} 
+</script></html>
