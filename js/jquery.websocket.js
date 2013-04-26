@@ -9,9 +9,7 @@
 		//for (i = 0; i < scoresArray.length; i++) {
 		//	this.append("<p>" + scoresArray[i].no + "," + scoresArray[i].scores + "</p>");	
 		//}		
-		
-		var scores = scoresArray.slice(0, 5);
-		
+				
 		// Use new style
 		$("#active-score-board").html(scoreBoardHtml);
 		$("#scoresTemplate").tmpl(scores).appendTo("#active-score-board");
