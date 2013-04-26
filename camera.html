@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>PhoneGap Demo</title>
+	<script type="text/javascript" charset="utf-8" src="js/jquery-1.9.2.min.js"></script>    
+	<script type="text/javascript" charset="utf-8" src="cordova-2.6.0.js"></script>	
+</head>
+
+<body>
+    
+<a onclick="capturePhoto();">Take Picture</a>
+
+<div><img style="display:block;" id="largeImage" src="" /></div>
+
+</body>
+<script type="text/javascript" charset="utf-8">
+var pictureSource;   
+var destinationType; 
+
+document.addEventListener("deviceready",onDeviceReady,false);
+
+function onDeviceReady() {
+    pictureSource = navigator.camera.PictureSourceType;
+    destinationType = navigator.camera.DestinationType;
+}
+
+function onPhotoDataSuccess(imageData) {
+	  $("#largeImage").attr('src', "data:image/jpeg;base64," + imageData);
+}
+
+function onFail(message) {
+}
+
+function capturePhoto() {
+	  navigator.camera.getPicture(onPhotoDataSuccess, onFail, {   
+					quality: 60,
+			      	encodingType: Camera.EncodingType.JPEG, 
+			      	destinationType: destinationType.DATA_URL,
+			      	targetWidth: 192,
+				 	targetHeight: 192,
+			 	}
+	  );
+}
+</script>
+</html>
